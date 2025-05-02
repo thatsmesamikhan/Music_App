@@ -2,19 +2,19 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { ACTIVE_OPACITY } from '../../enums/StyleGuide'
 
-const SongInfoButton = ({mainPress,iconPress,MainStyle,ImageStyle,FirstTextStyle,SecondTextStyle,Text1,Text2,source,icon}) => {
+const SongInfoButton = ({item,mainPress,iconPress,MainStyle,ImageStyle,FirstTextStyle,SecondTextStyle,Text1,Text2,source,icon}) => {
   return (
     <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={mainPress} style={[styles.mainStyle,MainStyle]}>
       <View style={styles.imageAndTextMainView}>
-      <Image source={source} style={[styles.imageStyle,ImageStyle]}/>
+      <Image source={item?.source} style={[styles.imageStyle,ImageStyle]}/>
       <View>
-        <Text style={[styles.firstTextStyle,FirstTextStyle]}>{Text1}</Text>
-      <Text style={[styles.secondTextStyle,SecondTextStyle]}>{Text2}</Text>
+        <Text style={[styles.firstTextStyle,FirstTextStyle]}>{item?.Text1}</Text>
+      <Text style={[styles.secondTextStyle,SecondTextStyle]}>{item?.Text2}</Text>
       </View>
       
       </View>
       <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={iconPress} style={styles.dotsView}>
-      {icon}
+      {item?.icon}
       </TouchableOpacity>
       </TouchableOpacity>
   )

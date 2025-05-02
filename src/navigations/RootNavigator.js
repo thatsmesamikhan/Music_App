@@ -23,6 +23,11 @@ const RootNavigator = () => {
             <Stack.Screen name={SCREEN.DOWNLOAD_SCREEN} component={ui.DownloadScreen}/>
             <Stack.Screen name={SCREEN.PLAYLISTS_SCREEN} component={ui.PlayListsScreen}/>
             <Stack.Screen name={SCREEN.ARTISTS_SCREEN} component={ui.ArtistsScreen}/>
+            <Stack.Screen name={SCREEN.LOGIN_SCREEN} component={ui.LoginScreen}/>
+            <Stack.Screen name={SCREEN.SIGN_UP_SCREEN} component={ui.SignUpScreen}/>
+            <Stack.Screen name={SCREEN.PHONE_NUMBER_SCREEN} component={ui.PhoneNumberScreen}/>
+            <Stack.Screen name={SCREEN.PROFILE_SCREEN} component={ui.ProfileScreen}/>
+            <Stack.Screen name={SCREEN.QUEUE_SCREEN} component={ui.QueueScreen}/>
             <Stack.Screen name={TAB.BOTTOM} component={BottomTab}/>
         </Stack.Navigator>
     </NavigationContainer>

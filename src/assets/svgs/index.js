@@ -42,6 +42,10 @@ import check_circle from '../svgs/check_circle'
 import equalTo from '../svgs/equalTo'
 import equalizer from '../svgs/equalizer'
 import Bigadd from '../svgs/Bigadd'
+import pencil from '../svgs/pencil'
+import check from '../svgs/check'
+
+
 export const SVG = {
     MusicLogo,
     Google,
@@ -86,5 +90,8 @@ export const SVG = {
    check_circle,
    equalTo,
    equalizer,
-   Bigadd
+   Bigadd,
+   pencil,
+   check
+
 }

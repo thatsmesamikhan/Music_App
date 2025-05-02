@@ -15,6 +15,5 @@ const styles = StyleSheet.create({
         fontWeight :'bold',
         color :'#FFFFFFBF',
         alignSelf :'flex-start',
-         marginLeft :'5%'
     }
 })

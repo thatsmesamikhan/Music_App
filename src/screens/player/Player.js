@@ -3,10 +3,17 @@ import React from 'react'
 import { SVG } from '../../assets'
 import { ACTIVE_OPACITY } from '../../enums/StyleGuide'
 import { IMAGES } from '../../assets/images'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import { SCREEN } from '../../enums'
 
 const { width , height} = Dimensions.get('window') 
 
 const Player = () => {
+ 
+  const navigation = useNavigation()
+  const route = useRoute()
+  const { selectedSong } = route.params;
+
   return (
     <View style={styles.mainStyle}>
         <View style={styles.secondView}>
@@ -19,7 +26,7 @@ const Player = () => {
 </TouchableOpacity>
 </View>
   
-  <Image source={IMAGES.LARGE_IMAGE_1} style={styles.imageStyle}/>
+  <Image source={selectedSong.image} style={styles.imageStyle}/>
 <TouchableOpacity activeOpacity={ACTIVE_OPACITY} style={styles.castViewStyle}>
 <SVG.cast/>
 <Text style={{color : '#FFFFFFBF'}}>Connect to a device</Text>
@@ -36,7 +43,7 @@ const Player = () => {
     alignItems : 'center',
     justifyContent : 'space-between'
 }}>
-<Text style={{color : '#FFFFFFBF',fontSize : 20,fontWeight : 'bold'}}>Inside Out</Text>
+<Text style={{color : '#FFFFFFBF',fontSize : 20,fontWeight : 'bold'}}>{selectedSong.text}</Text>
 <View style={{
     width : '35%',
     alignItems : 'center',
@@ -138,7 +145,7 @@ const Player = () => {
     alignItems :'center'
 }}>
 <Text style={{color : '#FFFFFF40',fontSize : 20}}>Up Next</Text>
-    <TouchableOpacity activeOpacity={ACTIVE_OPACITY} style={{
+    <TouchableOpacity onPress={() => navigation.navigate(SCREEN.QUEUE_SCREEN, {selectedSong : selectedSong})} activeOpacity={ACTIVE_OPACITY} style={{
     width : '25%',
     flexDirection :'row',
     alignItems :'center',

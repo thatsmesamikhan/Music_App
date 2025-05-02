@@ -12,7 +12,12 @@ export const SCREEN = {
     LIKED_SONGS : 'LikedSongs',
     DOWNLOAD_SCREEN : 'DownloadScreen',
     PLAYLISTS_SCREEN : 'PlayListsScreen',
-    ARTISTS_SCREEN : 'ArtistsScreen'
+    ARTISTS_SCREEN : 'ArtistsScreen',
+    PROFILE_SCREEN : 'ProfileScreen',
+    QUEUE_SCREEN : 'QueueScreen',
+    LOGIN_SCREEN : 'LoginScreen',
+    SIGN_UP_SCREEN : 'SignUpScreen',
+    PHONE_NUMBER_SCREEN : 'PhoneNumberScreen'
  }
 
 export const TAB = {

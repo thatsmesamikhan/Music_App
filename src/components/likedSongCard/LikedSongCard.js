@@ -4,31 +4,28 @@ import { SVG } from '../../assets'
 
 const {height} = Dimensions.get('window')
 
-const LikedSongCard = ({source,text1,text2,equalTo,linesIcon,downloadIcon}) => {
-  return (
-    <View style={styles.mainStyle}>
-    <View style={styles.songInfoView}>
-        {
-            equalTo && {equalTo}
-        }
-    <Image source={source}/>
-    <View style={styles.textView}>
-    <Text style={styles.text1Style}>{text1}</Text>
-    <Text style={styles.text2Style}>{text2}</Text>
-    </View>
-    </View>
-    <View style={styles.svgView}>
-        {
-            linesIcon &&  {linesIcon}
-        }
-       
-    {downloadIcon}
-    <SVG.Three_dots/>
-    </View>
-    
-    </View>
-  )
-}
+const LikedSongCard = ({source, text1, text2, equalTo, linesIcon, downloadIcon}) => {
+    return (
+      <View style={styles.mainStyle}>
+        <View style={styles.songInfoView}>
+          {/* Directly render equalTo */}
+          {equalTo}
+          <Image source={source} />
+          <View style={styles.textView}>
+            <Text style={styles.text1Style}>{text1}</Text>
+            <Text style={styles.text2Style}>{text2}</Text>
+          </View>
+        </View>
+        <View style={styles.svgView}>
+          {/* Directly render linesIcon */}
+          {linesIcon}
+          {downloadIcon}
+          <SVG.Three_dots />
+        </View>
+      </View>
+    );
+  };
+  
 
 export default LikedSongCard
 const styles = StyleSheet.create({
