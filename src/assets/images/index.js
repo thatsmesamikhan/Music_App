@@ -80,6 +80,7 @@ export const IMAGES = {
     CIRCLE_IMAGE7 : require('../images/circleImage7.png'),
     CIRCLE_IMAGE8 : require('../images/circleImage8.png'),
     ADD : require('../images/add.png'),
-    LARGE_IMAGE_1 : require('../images/LargeImage1.png')
+    LARGE_IMAGE_1 : require('../images/LargeImage1.png'),
+    ICON : require('../images/icon.png')
 
 }

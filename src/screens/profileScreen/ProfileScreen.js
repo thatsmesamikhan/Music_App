@@ -1,22 +1,46 @@
-import React, { useState } from 'react';
-import { Dimensions, FlatList, Image, Text, TouchableOpacity, View, Modal, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Dimensions, FlatList, Image, Text, View, ScrollView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IMAGES } from '../../assets/images';
 import { ProfileButtonData } from '../../dummies/Dummies';
 import { LanguageSelectionModal, LogOutModal, ProfileButtonCard, ProfileEmailandPhone, ProfileScreenHeader, QualityModal, RecentlySeeMore, SignUpPress } from '../../components';
 import { HeaderLabel } from '../../common';
 
-const { width, height } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 const ProfileScreen = () => {
+  const [userName, setUserName] = useState('Logan Jimmy');
+  const [userEmail, setUserEmail] = useState('jim_logan01@gmail.com');
+  const [userPhone, setUserPhone] = useState('123456789');
+
   const [modalVisible, setModalVisible] = useState(false);
   const [qualityModalVisible, setQualityModalVisible] = useState(false);
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
   const [selectedQuality, setSelectedQuality] = useState('HD');
 
   const [selectedLanguages, setSelectedLanguages] = useState({
-    column1: 'International', // Default, will be displayed as "English"
+    column1: 'International',
     column2: 'Tamil',
   });
+
+  // Load user info from AsyncStorage on mount
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const storedName = await AsyncStorage.getItem('userName');
+        const storedEmail = await AsyncStorage.getItem('userEmail');
+        const storedPhone = await AsyncStorage.getItem('userPhone');
+
+        if (storedName) setUserName(storedName);
+        if (storedEmail) setUserEmail(storedEmail);
+        if (storedPhone) setUserPhone(storedPhone);
+      } catch (error) {
+        console.log('Error loading user data from AsyncStorage:', error);
+      }
+    };
+
+    loadUserData();
+  }, []);
 
   return (
     <View style={styles.mainStyle}>
@@ -28,11 +52,11 @@ const ProfileScreen = () => {
             <View style={styles.imageView}>
               <Image source={IMAGES.USER} style={styles.imageStyle} />
             </View>
-            <Text style={styles.userNameStyle}>Logan Jimmy</Text>
+            <Text style={styles.userNameStyle}>{userName}</Text>
           </View>
 
-          <ProfileEmailandPhone text={'Email'} info={'jim_logan01@gmail.com'} />
-          <ProfileEmailandPhone text={'Phone Number'} info={'8844662200'} />
+          <ProfileEmailandPhone text={'Email'} info={userEmail} />
+          <ProfileEmailandPhone text={'Phone Number'} info={userPhone} />
 
           <View style={styles.flatListView}>
             <FlatList
@@ -46,7 +70,6 @@ const ProfileScreen = () => {
 
           <HeaderLabel text={'Settings'} textStyle={styles.settingsTextStyle} />
 
-          {/* RecentlySeeMore with Modal Trigger */}
           <RecentlySeeMore
             onPress={() => setModalVisible(true)}
             text1={'Music Language(s)'}
@@ -58,21 +81,19 @@ const ProfileScreen = () => {
           <RecentlySeeMore
             onPress={() => setQualityModalVisible(true)}
             text1={'Streaming Quality'}
-            text2={selectedQuality} // Now dynamically shows the selected quality
+            text2={selectedQuality}
             MainStyle={styles.recentlyMainStyle}
             text1Style={styles.textStyle}
           />
 
-          {/* Logout Button with Modal */}
-      <SignUpPress
-      text={'Logout'}
-      onPress={() => setLogoutModalVisible(true)}
-      MainStyle={{marginTop : height * 0.04}}
-      />
+          <SignUpPress
+            text={'Logout'}
+            onPress={() => setLogoutModalVisible(true)}
+            MainStyle={{ marginTop: height * 0.04 }}
+          />
         </ScrollView>
       </View>
 
-      {/* Modals */}
       <LanguageSelectionModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
@@ -87,12 +108,10 @@ const ProfileScreen = () => {
         setSelectedQuality={setSelectedQuality}
       />
 
-      {/* Logout Confirmation Modal */}
       <LogOutModal
-      logoutModalVisible={logoutModalVisible}
-      setLogoutModalVisible={setLogoutModalVisible}
+        logoutModalVisible={logoutModalVisible}
+        setLogoutModalVisible={setLogoutModalVisible}
       />
-
     </View>
   );
 };
@@ -111,11 +130,4 @@ const styles = {
   settingsTextStyle: { marginLeft: 0, fontSize: 30, marginTop: height * 0.03 },
   recentlyMainStyle: { marginTop: height * 0.03 },
   textStyle: { fontSize: 18 },
-
-  // Logout Button
-  logoutButton: { marginTop: height * 0.04, paddingVertical: 12, paddingHorizontal: 30, backgroundColor: '#D9534F', borderRadius: 8 },
-  logoutText: { color: 'white', fontSize: 18, fontWeight: 'bold' },
-
-  // Modal Styles
- 
 };

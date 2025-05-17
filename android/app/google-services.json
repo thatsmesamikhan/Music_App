@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "71085906968",
+    "project_id": "musica-c9f5e",
+    "storage_bucket": "musica-c9f5e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71085906968:android:08e448efd067ea2c32376d",
+        "android_client_info": {
+          "package_name": "com.musica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71085906968-cslk4s8vg7rklocirb2opleilnag5mbp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.musica",
+            "certificate_hash": "4f5477264abfe4a7dfb89fb345d24b4c34a68c52"
+          }
+        },
+        {
+          "client_id": "71085906968-d41lca2h2peeesc0acci93i21h981tta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD33uYv9mIr_cGMAtoxi3j_3iuoZojdOMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71085906968-d41lca2h2peeesc0acci93i21h981tta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
